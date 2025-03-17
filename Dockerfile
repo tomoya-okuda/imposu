@@ -1,6 +1,6 @@
 ARG VERSION=latest
 
-FROM node:16
+FROM node:18
 ARG DATABASE_URL
 
 # コンテナ内のwork dirを設定
