@@ -1,0 +1,10 @@
+FROM node:16
+
+# コンテナ内のwork dirを設定
+WORKDIR /src
+
+# package.jsonをコピーして、パッケージのインストール
+COPY package.json ./
+COPY package-lock.json ./
+COPY prisma/ ./prisma/
+RUN npm install 

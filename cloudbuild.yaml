@@ -1,0 +1,113 @@
+steps:
+  # [Proxy] Start Cloud SQL Proxy in container image
+  - id: Proxy:Start
+    name: 'gcr.io/cloudsql-docker/gce-proxy:1.15'
+    args:
+      - '/cloud_sql_proxy'
+      - '-dir=/cloudsql'
+      - '-instances=$_INSTANCE_CONNECTION_NAME'
+    volumes:
+      - name: cloudsql
+        path: /cloudsql
+    waitFor: ['-']
+
+  # [Migrate] Build container image
+  - id: Migrate:Build
+    name: 'docker'
+    args:
+      - 'build'
+      - '--no-cache'
+      - '-f'
+      - 'Dockerfile.migrate'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME/migrate:$COMMIT_SHA'
+      - '.'
+    waitFor: ['-']
+
+  # [Migrate] Run container image
+  - id: Migrate:Run
+    name: 'docker'
+    args:
+      - 'run'
+      - '-e'
+      - 'DATABASE_URL=$_DATABASE_URL'
+      - '-v'
+      - 'cloudsql:/cloudsql'
+      - '-w'
+      - '/src'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME/migrate:$COMMIT_SHA'
+      - 'sh'
+      - '-c'
+      - 'npx prisma migrate deploy'
+    volumes:
+      - name: cloudsql
+        path: /cloudsql
+    waitFor: ['Migrate:Build']
+
+  # [App] Build the container image
+  - id: App:Build
+    name: docker
+    args:
+      - build
+      - '--no-cache'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - .
+      - '-f'
+      - 'Dockerfile'
+      - '--build-arg'
+      - 'DATABASE_URL=$_DATABASE_URL'
+    waitFor: ['-']
+
+  # [App] Push the container image to Container Registry
+  - id: App:Push
+    name: docker
+    args:
+      - push
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+    waitFor: ['Migrate:Run', 'App:Build']
+
+  # [App] Deploy container image to Cloud Run
+  - id: App:Deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - '--platform=$_PLATFORM'
+      - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    waitFor: ['App:Push']
+
+  # [Proxy] Stop Cloud SQL Proxy Container image
+  - id: Proxy:Stop
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - 'docker ps -q --filter ancestor="gcr.io/cloudsql-docker/gce-proxy:1.15" | xargs docker stop'
+    waitFor: ['Migrate:Run']
+
+images:
+  - '$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA'
+
+options:
+  substitutionOption: ALLOW_LOOSE
+
+substitutions:
+  _DEPLOY_REGION: us-central1
+  _GCR_HOSTNAME: gcr.io
+  _PLATFORM: managed
+  _SERVICE_NAME: imposu
+  _DATABASE_URL: postgres://postgres:OizpLpncZ3-mO6sqv@34.66.77.138:5432/imposu-db
+  _INSTANCE_CONNECTION_NAME: imposu:us-central1:imposu-sql
+
+timeout: 1200s
+
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - $_SERVICE_NAME

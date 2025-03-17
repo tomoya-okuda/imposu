@@ -1,39 +1,25 @@
-FROM node:18-alpine AS base
+ARG VERSION=latest
 
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
+FROM node:16
+ARG DATABASE_URL
 
-COPY package*.json ./
-RUN npm ci
+# コンテナ内のwork dirを設定
+WORKDIR /src
 
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# 環境変数を設定し、ポートとホストを指定
+ENV PORT 8080
+ENV HOST 0.0.0.0
+ENV DATABASE_URL $DATABASE_URL
+
+# package.jsonをコピーして、パッケージのインストール
+COPY package.json ./
+COPY package-lock.json ./
+COPY prisma/ ./prisma/
+RUN npm install
+
+# ソースをコピーして、ビルド
 COPY . .
-
-ENV NEXT_TELEMETRY_DISABLED 1
-
 RUN npm run build
 
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT 3000
-
-CMD ["npm", "start"]
+# コンテナが起動したら、nextを起動するよう指定
+CMD [ "npm", "run", "start" ]
