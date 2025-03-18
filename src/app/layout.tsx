@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
 
 import { Provider } from '@/app/provider'
+import { home } from '@/components/pageData'
 
-export const metadata: Metadata = {
-  title: 'インポス請求書 - Stripe決済の0.4%を削減',
-  description:
-    'ストライプ請求書の手数料0.4%を削減するための、請求書発行サービス',
-}
+export const metadata: Metadata = home.metadata
 
 export default function RootLayout({
   children,

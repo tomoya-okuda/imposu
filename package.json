@@ -12,11 +12,15 @@
     "@chakra-ui/react": "^3.13.0",
     "@emotion/react": "^11.14.0",
     "@prisma/client": "^6.5.0",
+    "@stripe/stripe-js": "^6.0.0",
+    "@tabler/icons-react": "^3.31.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "next": "15.2.2",
+    "next": "^15.2.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "schema-dts": "^1.1.5",
+    "stripe": "^17.7.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

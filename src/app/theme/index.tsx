@@ -11,6 +11,7 @@ const zenkaku = Zen_Kaku_Gothic_New({
 export const system = createSystem(defaultConfig, {
   globalCss: {
     'html, body': {
+      bg: 'White.200',
       maxW: '100vw',
       overflowX: 'hidden',
       scrollbarWidth: 'none',
@@ -29,9 +30,12 @@ export const system = createSystem(defaultConfig, {
     img: {
       display: 'block',
     },
-    '.maxW7xl': {
-      maxWidth: '7xl',
+    '.max6XL': {
+      maxWidth: '6xl',
       margin: '0 auto',
+    },
+    '.px7': {
+      px: '7',
     },
   },
   theme: {
@@ -60,7 +64,30 @@ export const system = createSystem(defaultConfig, {
         '11xl': { value: '60px' },
         '12xl': { value: '64px' },
       },
-      colors: {},
+      colors: {
+        White: {
+          100: { value: '#FFFFFF' },
+          200: { value: '#F1F4FF' },
+        },
+        LightGray: {
+          100: { value: '#E8E9ED' },
+        },
+        DarkGray: {
+          100: { value: '#4A485F' },
+        },
+        Black: {
+          100: { value: '#0F0D26' },
+        },
+        Primary: {
+          100: { value: '#5B74FF' },
+        },
+        Secondary: {
+          100: { value: '#09AF2D' },
+        },
+        Tertiary: {
+          100: { value: '#FFD700' },
+        },
+      },
     },
   },
 })
