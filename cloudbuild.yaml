@@ -96,6 +96,7 @@ images:
 
 options:
   substitutionOption: ALLOW_LOOSE
+  queueTtl: 0s
 
 substitutions:
   _DEPLOY_REGION: us-central1
