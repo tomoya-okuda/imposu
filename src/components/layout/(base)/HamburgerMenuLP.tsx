@@ -88,7 +88,7 @@ export function HamburgerMenuLP({ ...props }: DrawerTriggerProps) {
         flexDir={'column'}
         alignItems={'center'}
         gap={1}
-        color={'DarkGray.100'}
+        color={'DarkGray.200'}
         {...props}
       >
         <Text

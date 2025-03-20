@@ -71,9 +71,11 @@ export const system = createSystem(defaultConfig, {
         },
         LightGray: {
           100: { value: '#E8E9ED' },
+          200: { value: '#acb0c2' },
         },
         DarkGray: {
-          100: { value: '#4A485F' },
+          100: { value: '#797d91' },
+          200: { value: '#4A485F' },
         },
         Black: {
           100: { value: '#0F0D26' },

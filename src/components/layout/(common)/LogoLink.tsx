@@ -23,7 +23,7 @@ export function LogoLink({ ...props }: LogoLinkProps) {
       <Text
         fontSize={'9px'}
         fontWeight={'900'}
-        color={'DarkGray.100'}
+        color={'DarkGray.200'}
         lineHeight={'10px'}
       >
         Stripe手数料がタダになる

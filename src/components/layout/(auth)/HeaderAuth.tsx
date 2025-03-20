@@ -12,7 +12,7 @@ export function HeaderAuth({ variant = 'sign-up' }: Props) {
   const HeaderStyle: FlexProps = {
     as: 'header',
     borderBottom: '1px dashed',
-    borderColor: 'DarkGray.100',
+    borderColor: 'DarkGray.200',
     w: '100%',
     height: { base: '60px', md: '72px' },
     alignItems: 'center',

@@ -71,7 +71,7 @@ export function FV() {
             animationDelay: '0.1s',
           }}
         >
-          <Text fontWeight={'900'} fontSize={'xs'} color={'DarkGray.100'}>
+          <Text fontWeight={'900'} fontSize={'xs'} color={'DarkGray.200'}>
             Powerd by
           </Text>
           <Box position={'relative'} w={'42px'} pt={'2px'}>
@@ -106,7 +106,7 @@ export function FV() {
         </Text>
         <Text
           fontWeight={'700'}
-          color={'DarkGray.100'}
+          color={'DarkGray.200'}
           mt={4}
           mb={6}
           opacity={0}
@@ -119,8 +119,8 @@ export function FV() {
             as={'span'}
             fontWeight={'900'}
             border={'1px solid'}
-            borderColor={'DarkGray.100'}
-            color={'DarkGray.100'}
+            borderColor={'DarkGray.200'}
+            color={'DarkGray.200'}
             px={3}
             py={1}
             fontSize={'sm'}
@@ -134,8 +134,8 @@ export function FV() {
             as={'span'}
             fontWeight={'900'}
             border={'1px solid'}
-            borderColor={'DarkGray.100'}
-            color={'DarkGray.100'}
+            borderColor={'DarkGray.200'}
+            color={'DarkGray.200'}
             px={3}
             py={1}
             fontSize={'sm'}
@@ -168,7 +168,7 @@ export function FV() {
           mt={6}
           mb={12}
           fontSize={'13px'}
-          color={'DarkGray.100'}
+          color={'DarkGray.200'}
           fontWeight={'900'}
           display={'flex'}
           flexDirection={'column'}

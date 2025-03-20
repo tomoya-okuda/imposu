@@ -18,7 +18,7 @@ export default function ContactThanksPage() {
           gap={24}
           bg={'White.100'}
           borderBottom={'1px dashed'}
-          borderColor={'DarkGray.100'}
+          borderColor={'DarkGray.200'}
         >
           <Text fontSize={'15px'}>
             トライアル版のお申し込みが完了しました。

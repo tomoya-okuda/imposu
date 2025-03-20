@@ -1,7 +1,7 @@
 import { Box, Flex, Grid } from '@chakra-ui/react'
 
+import { HamburgerMenuLP } from '@/components/layout/(base)/HamburgerMenuLP'
 import { LogoLink } from '@/components/layout/(common)/LogoLink'
-import { HamburgerMenuLP } from '@/components/layout/(lp)/HamburgerMenuLP'
 import { Button } from '@/components/ui/Button'
 import { Link } from '@/components/ui/Link'
 
@@ -10,7 +10,7 @@ export function HeaderLP() {
     <Box
       as={'header'}
       borderBottom={'1px dashed'}
-      borderColor={'DarkGray.100'}
+      borderColor={'DarkGray.200'}
       h={{ base: '60px', md: '72px' }}
     >
       <Grid
@@ -59,7 +59,7 @@ const NavLink = ({
   return (
     <Link
       href={href}
-      color={'DarkGray.100'}
+      color={'DarkGray.200'}
       fontSize={'sm'}
       fontWeight={'700'}
       transition={'color 0.1s ease-in'}

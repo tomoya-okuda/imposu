@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
-import { FooterLP } from '@/components/layout/(lp)/FooterLP'
-import { HeaderLP } from '@/components/layout/(lp)/HeaderLP'
+import { FooterLP } from '@/components/layout/(base)/FooterLP'
+import { HeaderLP } from '@/components/layout/(base)/HeaderLP'
 
 export default function LPLayout({
   children,
