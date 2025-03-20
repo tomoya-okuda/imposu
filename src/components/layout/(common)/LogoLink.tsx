@@ -1,8 +1,8 @@
 import { Box, BoxProps, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 
-import { APP_NAME } from '@/components/pageData'
 import { Link, LinkProps } from '@/components/ui/Link'
+import { APP_NAME } from '@/const/pageData'
 
 type LogoLinkProps = BoxProps & Omit<LinkProps, 'href' | 'children'> & {}
 

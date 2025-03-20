@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { Provider } from '@/app/provider'
-import { home } from '@/components/pageData'
+import { home } from '@/const/pageData'
 
 export const metadata: Metadata = home.metadata
 

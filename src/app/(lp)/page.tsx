@@ -2,7 +2,7 @@ import { WithContext, WebPage as JsonLDWebPage } from 'schema-dts'
 
 import { Benefits } from '@/components/layout/(lp)/Benefits'
 import { FV } from '@/components/layout/(lp)/FV'
-import { APP_DESCRIPTION, APP_NAME, home } from '@/components/pageData'
+import { APP_DESCRIPTION, APP_NAME, home } from '@/const/pageData'
 import { getCurrentDate } from '@/lib/dateUtils'
 
 export default function LandingPage() {
