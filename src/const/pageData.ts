@@ -10,14 +10,14 @@ export const navData = {
       title: `Stripe請求書0.4%を削減 | ${APP_NAME}`,
       description: `${APP_DESCRIPTION}`,
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+        canonical: `${process.env.NEXTAUTH_URL}/`,
       },
       openGraph: {
         title: `Stripe請求書0.4%を削減しませんか？ | ${APP_NAME}`,
         description: `${APP_DESCRIPTION}`,
         images: [
           {
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/imposu-ogp.webp`,
+            url: `${process.env.NEXTAUTH_URL}/images/imposu-ogp.webp`,
             width: 1200,
             height: 630,
           },

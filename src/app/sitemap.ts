@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const WEB_URL = process.env.NEXT_PUBLIC_BASE_URL
+const WEB_URL = process.env.NEXTAUTH_URL
 const _lastModified = new Date()
 
 export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {

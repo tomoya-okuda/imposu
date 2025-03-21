@@ -11,22 +11,22 @@ export default function LandingPage() {
     '@type': 'WebPage',
     name: `${home.metadata.title}`,
     description: `${APP_DESCRIPTION}`,
-    image: `${process.env.NEXT_PUBLIC_BASE_URL}/images/imposu-ogp.webp`,
+    image: `${process.env.NEXTAUTH_URL}/images/imposu-ogp.webp`,
     datePublished: '2025-04-01',
     dateModified: getCurrentDate(),
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-    mainEntityOfPage: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+    url: `${process.env.NEXTAUTH_URL}`,
+    mainEntityOfPage: `${process.env.NEXTAUTH_URL}`,
     author: {
       '@type': 'Organization',
       name: `${APP_NAME}`,
-      url: process.env.NEXT_PUBLIC_BASE_URL,
+      url: process.env.NEXTAUTH_URL,
     },
     publisher: {
       '@type': 'Organization',
       name: `${APP_NAME}`,
       logo: {
         '@type': 'ImageObject',
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/images/logo/imposu-logo.svg`,
+        url: `${process.env.NEXTAUTH_URL}/images/logo/imposu-logo.svg`,
       },
     },
   }
@@ -36,8 +36,8 @@ export default function LandingPage() {
     '@type': 'Organization',
     name: `${APP_NAME}`,
     description: `${APP_DESCRIPTION}`,
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
-    logo: `${process.env.NEXT_PUBLIC_BASE_URL}/images/logo/imposu-logo.svg`,
+    url: `${process.env.NEXTAUTH_URL}`,
+    logo: `${process.env.NEXTAUTH_URL}/images/logo/imposu-logo.svg`,
     email: 'hello@imposu.com',
   }
   return (
